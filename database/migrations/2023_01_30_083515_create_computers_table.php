@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('computers', function (Blueprint $table) {
             $table->id();
             $table->String('name');
+            $table->Year('year');
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@ Route::get('/computers', [ComputerController::class, 'index']);
 Route::get('/computer-add', [ComputerController::class, 'add']);
 Route::post('/computer-store', [ComputerController::class, 'store']);
 
-Route::get('/computer-edit', [ComputerController::class, 'edit']);
-Route::put('/computer-update', [ComputerController::class, 'update']);
+Route::get('/computer-edit/{id}', [ComputerController::class, 'edit']);
+Route::put('/computer-update/{id}', [ComputerController::class, 'update']);
 
-Route::get('/computer-delete', [ComputerController::class, 'delete']);
+Route::get('/computer-delete/{id}', [ComputerController::class, 'delete']);

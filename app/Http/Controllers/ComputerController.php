@@ -17,17 +17,36 @@ class ComputerController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'year' => 'required'
+        ]);
+
         $computer = new Computer;
         $computer->name = $request['name'];
+        $computer->year = $request['year'];
         $computer->save();
         return redirect('/computers');
     }
 
-    public function edit() {
-        return view('computer-edit');
+    public function edit($id) {
+        $computer = Computer::find($id);
+        return view('computer-edit', compact('computer'));
     }
 
-    public function update(Request $request) {
-        return $request;
+    public function update($id, Request $request) {
+        $computer = Computer::find($id);
+        $computer->name = $request['name'];
+        $computer->year = $request['year'];
+        $computer->save();
+
+        return redirect('/computers');
+    }
+
+    public function delete($id) {
+        $computer = Computer::find($id);
+        $computer->delete();
+
+        return redirect('/computers');
     }
 }
