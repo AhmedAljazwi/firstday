@@ -35,6 +35,11 @@ class ComputerController extends Controller
     }
 
     public function update($id, Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'year' => 'required'
+        ]);
+
         $computer = Computer::find($id);
         $computer->name = $request['name'];
         $computer->year = $request['year'];

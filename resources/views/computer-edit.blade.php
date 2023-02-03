@@ -3,6 +3,16 @@
 @section('title', 'Edit Computer')
 @section('content')
 
+@if ($errors->any())
+
+<div class="alert alert-danger">
+    @foreach ($errors->all() as $error)
+        <div class="mb-2">{{$error}}</div>
+    @endforeach
+</div>
+    
+@endif
+
 <form action="{{url('/computer-update/'.$computer->id)}}" method="post">
     @csrf
     @method('put')
